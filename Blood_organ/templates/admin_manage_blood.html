@@ -1,0 +1,60 @@
+{%include 'adminheader.html'%}
+{%if data['up']%}
+<center>
+	<form method="post">
+		<h1>Update Blood groups</h1>
+		<table border="2">
+			<tr>
+				<th>Group Name</th>
+				<td><input type="text" name="group" value="{{data['up'][0]['group_name']}}"></td>
+			</tr>
+			<tr>
+				<th>Group Description</th>
+				<td><input type="text" name="desc" value="{{data['up'][0]['group_description']}}"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="update" value="update"></td>
+			</tr>
+		</table>
+	</form>
+</center>
+{%else%}
+<center>
+	<form method="post">
+		<h1>Manage Blood groups</h1>
+		<table border="2">
+			<tr>
+				<th>Group Name</th>
+				<td><input type="text" name="group"></td>
+			</tr>
+			<tr>
+				<th>Group Description</th>
+				<td><input type="text" name="desc"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="submit"></td>
+			</tr>
+		</table>
+	</form>
+</center>
+{%endif%}
+<center>
+	<h1>Blood Groups</h1>
+	<table border="2">
+		<tr>
+			<th>slno.</th>
+			<th>Blood Groups</th>
+			<th>Description</th>
+		</tr>
+		{%for row in data['group']%}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['group_name']}}</td>
+			<td>{{row['group_description']}}</td>
+			<td><a href="?action=update&id={{row['group_id']}}">update</a></td>
+			<td><a href="?action=delete&id={{row['group_id']}}">delete</a></td>
+		</tr>
+		{%endfor%}
+	</table>
+</center>
+{%include 'footer.html'%}

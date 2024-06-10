@@ -1,0 +1,30 @@
+{%include 'donarheader.html'%}
+<center>
+	<h1> blood requirements</h1>
+	<table border="2">
+		<tr>
+			<th>slno.</th>
+		
+			<th>group</th>
+			<th>unit required</th>
+			<th>description</th>
+			
+		</tr>
+		{%for row in data['requ']%}
+		<tr>
+			<td>{{loop.index}}</td>
+		
+			<td>{{row['group_name']}}</td>
+			<td>{{row['unit_required']}}</td>
+			<td>{{row['description']}}</td>
+			{% if row['donar_id']=='0' %}
+			<td><a href="?action=update&id={{row['message_id']}}">accept</a></td>
+			<td><a href="?action=delete&id={{row['message_id']}}">delete</a></td>
+			{%else%}
+			<td>{{row['donar_id']}}</td>	
+			{%endif%}
+		</tr>
+		{%endfor%}
+	</table>
+</center>
+{%include 'footer.html'%}

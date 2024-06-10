@@ -1,0 +1,25 @@
+{%include 'receiverheader.html'%}
+<center>
+	<h1>Organ Donates</h1>
+	<table border="2">
+		<tr>
+			<th>slno.</th>
+		<!-- 	<th>receiver</th> -->
+			<th>organ</th>
+			<th>unit required</th>
+			<th>date_time</th>
+			<th>status</th>
+		</tr>
+		{%for row in data['bld']%}
+		<tr>
+			<td>{{loop.index}}</td>
+			<!-- <td>{{row['first_name']}}</td> -->
+			<td>{{row['organ_name']}}</td>
+			<td>{{row['unit required']}}</td>
+			<td>{{row['date_time']}}</td>
+			<td>{{row['status']}}</td>
+		</tr>
+		{%endfor%}
+	</table>
+</center>
+{%include 'footer.html'%}

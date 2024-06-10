@@ -1,0 +1,60 @@
+{%include 'adminheader.html'%}
+{%if data['up']%}
+<center>
+	<form method="post">
+		<h1>Update Organs</h1>
+		<table border="2">
+			<tr>
+				<th>Organ Name</th>
+				<td><input type="text" name="organ" value="{{data['up'][0]['organ_name']}}"></td>
+			</tr>
+			<tr>
+				<th>Organ Details</th>
+				<td><input type="text" name="detail" value="{{data['up'][0]['organ_details']}}"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="update" value="update"></td>
+			</tr>
+		</table>
+	</form>
+</center>
+{%else%}
+<center>
+	<form method="post">
+		<h1>Manage Organ</h1>
+		<table border="2">
+			<tr>
+				<th>Organ Name</th>
+				<td><input type="text" name="organ"></td>
+			</tr>
+			<tr>
+				<th>Organ Details</th>
+				<td><input type="text" name="detail"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="submit"></td>
+			</tr>
+		</table>
+	</form>
+</center>
+{%endif%}
+<center>
+	<h1>Organs</h1>
+	<table border="2">
+		<tr>
+			<th>slno.</th>
+			<th>Organs</th>
+			<th>Organ Details</th>
+		</tr>
+		{%for row in data['organ']%}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['organ_name']}}</td>
+			<td>{{row['organ_details']}}</td>
+			<td><a href="?action=update&id={{row['organ_id']}}">update</a></td>
+			<td><a href="?action=delete&id={{row['organ_id']}}">delete</a></td>
+		</tr>
+		{%endfor%}
+	</table>
+</center>
+{%include 'footer.html'%}

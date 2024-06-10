@@ -1,0 +1,33 @@
+{%include 'organizationheader.html'%}
+<center>
+	<h1>View Donar</h1>
+	<table border="2">
+		<tr>
+			<th>slno.</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Gender</th>
+			<th>Age</th>
+			<th>Pincode</th>
+			<th>Phone</th>
+			<th>Email</th>
+		
+		</tr>
+		{%for row in data['donar']%}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['firstname']}}</td>
+			<td>{{row['last_name']}}</td>
+			<td>{{row['gender']}}</td>
+			<td>{{row['age']}}</td>
+			<td>{{row['pincode']}}</td>
+			<td>{{row['phone']}}</td>
+			<td>{{row['email']}}</td>
+			<td><a href="org_organ_request?id={{row['donar_id']}}">Organ donating request</a></td>
+			<td><a href="org_blood_request?id={{row['donar_id']}}">Blood donating request</a></td>
+			
+		</tr>
+		{%endfor%}
+	</table>
+</center>
+{%include 'footer.html'%}

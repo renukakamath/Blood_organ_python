@@ -1,0 +1,55 @@
+{%include 'donarheader.html'%}
+<center>
+	<form method="post">
+		<h1>Send Blood donation request</h1>
+		<table border="2">
+			<tr>
+				<th>Receiver</th>
+				<td><select name="receiver">
+					{% for row in data['rece'] %}
+					<option value="{{row['receiver_id']}}">{{row['first_name']}}</option>
+					{% endfor %}	
+				</td></select>
+			</tr>
+			<tr>
+				<th>Organ</th>
+				<td><select name="org">
+					{% for row in data['orga'] %}
+					<option value="{{row['organ_id']}}">{{row['organ_name']}}</option>
+					{% endfor %}	
+				</td></select>
+			</tr>
+			<tr>
+				<th>unit required</th>
+				<td><input type="text" name="required"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="submit"></td>
+			</tr>
+		</table>
+	</form>
+</center>
+<center>
+	<h1>Organ Donates</h1>
+	<table border="2">
+		<tr>
+			<th>slno.</th>
+			<th>receiver</th>
+			<th>organ</th>
+			<th>unit required</th>
+			<th>date_time</th>
+			<th>status</th>
+		</tr>
+		{%for row in data['bld']%}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['first_name']}}</td>
+			<td>{{row['organ_name']}}</td>
+			<td>{{row['unit required']}}</td>
+			<td>{{row['date_time']}}</td>
+			<td>{{row['status']}}</td>
+		</tr>
+		{%endfor%}
+	</table>
+</center>
+{%include 'footer.html'%}

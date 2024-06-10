@@ -1,0 +1,19 @@
+{%include 'organizationheader.html'%}
+<center>
+	<h1>Blood Groups</h1>
+	<table border="2">
+		<tr>
+			<th>slno.</th>
+			<th>Blood Groups</th>
+			<th>Description</th>
+		</tr>
+		{%for row in data['blood']%}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['group_name']}}</td>
+			<td>{{row['group_description']}}</td>
+		</tr>
+		{%endfor%}
+	</table>
+</center>
+{%include 'footer.html'%}

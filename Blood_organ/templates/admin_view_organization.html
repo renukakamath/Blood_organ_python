@@ -1,0 +1,27 @@
+{%include 'adminheader.html'%}
+<center>
+	<h1>View Organization</h1>
+	<table border="2">
+		<tr>
+			<th>slno.</th>
+			<th>Name</th>
+			<th>Place</th>
+			<th>Pincode</th>
+			<th>Phone</th>
+			<th>Email</th>
+			<th>License Number</th>
+		</tr>
+		{%for row in data['org']%}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['name']}}</td>
+			<td>{{row['place']}}</td>
+			<td>{{row['pincode']}}</td>
+			<td>{{row['phone']}}</td>
+			<td>{{row['email']}}</td>
+			<td>{{row['license_number']}}</td>
+		</tr>
+		{%endfor%}
+	</table>
+</center>
+{%include 'footer.html'%}
